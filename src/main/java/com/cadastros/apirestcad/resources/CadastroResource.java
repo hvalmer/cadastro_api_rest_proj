@@ -3,9 +3,11 @@ package com.cadastros.apirestcad.resources;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -52,5 +54,17 @@ public class CadastroResource {
 	public Cadastro salvaCadastro(@RequestBody Cadastro cadastro) {
 		return cadastroRepository.save(cadastro);
 	}
+	
+	//Método DELETE deleta determinado cadastro
+		@DeleteMapping("/cadastro")
+		public void deletaCadastro(@RequestBody Cadastro cadastro) {
+			cadastroRepository.delete(cadastro);
+		}
+		
+	//Método PUT atualiza determinado cadastro
+		@PutMapping("/cadastro")
+		public Cadastro atualizaCadastro(@RequestBody Cadastro cadastro) {
+			return cadastroRepository.save(cadastro);
+		}
 	
 }
